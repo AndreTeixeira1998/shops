@@ -1,5 +1,6 @@
 export * from './generated/graphql';
 export * from './util/product.util';
+export * from './util/user.util';
 export * from './util/search.util';
 export * from './util/seo.util';
 export * from './util/variant.util';

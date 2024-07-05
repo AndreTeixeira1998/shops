@@ -28,6 +28,12 @@
                 </i>
               </span>
               <span class="is-hidden-mobile icon is-medium">
+                <i
+                  class="has-text-white mdi mdi-account-outline mdi-36px"
+                  @click="isLoginModalActive = true"
+                ></i>
+              </span>
+              <span class="is-hidden-mobile icon is-medium">
                 <a
                   :href="`https://wa.me/${$context.phoneNr}`"
                   target="_blank"
@@ -318,6 +324,12 @@
         <Search />
       </div>
     </b-modal>
+
+    <!-------------- login modal ------------------->
+    <LoginModal
+      :isModalActive="isLoginModalActive"
+      @modalClosed="isLoginModalActive = false"
+    />
   </div>
 </template>
 <script>
@@ -326,6 +338,7 @@ import Basket from 'pinelab-storefront/lib/components/Basket';
 import Search from '../components/Search';
 import NewsletterForm from '../components/NewsletterForm';
 import PopupNotification from '../components/PopupNotification';
+import LoginModal from '../components/LoginModal';
 
 export default {
   components: {
@@ -334,6 +347,7 @@ export default {
     Basket,
     NewsletterForm,
     PopupNotification,
+    LoginModal,
   },
   methods: {
     hasChildren(collection) {
@@ -392,6 +406,7 @@ export default {
   data() {
     return {
       isSearchModalActive: false,
+      isLoginModalActive: false,
     };
   },
   computed: {

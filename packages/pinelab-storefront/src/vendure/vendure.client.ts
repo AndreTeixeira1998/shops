@@ -19,6 +19,8 @@ import {
   DutchPostalCodeInput,
   EligibleGiftsQuery,
   EligibleShippingMethodsQuery,
+  LoginMutation,
+  LoginMutationVariables,
   MolliePaymentIntent,
   MutationSetOrderCustomFieldsArgs,
   MyparcelDropOffPoint,
@@ -70,6 +72,7 @@ import {
   GET_ORDER_BY_CODE,
   GET_PRICE_AND_STOCKLEVEL,
   GET_PRODUCT,
+  LOGIN,
   REMOVE_ALL_ORDER_LINES,
   REMOVE_COUPON_CODE,
   SET_CUSTOMER_FOR_ORDER,
@@ -418,6 +421,22 @@ export class VendureClient {
         this.store.activeOrder?.code,
         result.errorCode
       );
+    }
+  }
+
+  async login(
+    username: string,
+    password: string,
+    rememberMe: boolean
+  ): Promise<void> {
+    try {
+      const { login } = await this.request<
+        LoginMutation,
+        LoginMutationVariables
+      >(LOGIN, { username, password, rememberMe });
+      await this.validateResult(login);
+    } catch (error) {
+      throw error;
     }
   }
 

@@ -1332,6 +1332,17 @@ export type InvalidCredentialsError = ErrorResult & {
   authenticationError: Scalars['String'];
 };
 
+export type Invoice = {
+  __typename?: 'Invoice';
+  id: Scalars['ID'];
+  createdAt?: Maybe<Scalars['DateTime']>;
+  invoiceNumber: Scalars['Int'];
+  downloadUrl: Scalars['String'];
+  orderCode: Scalars['String'];
+  orderId: Scalars['ID'];
+  isCreditInvoice: Scalars['Boolean'];
+};
+
 /**
  * @description
  * Languages in the form of a ISO 639-1 language code with optional
@@ -2122,6 +2133,7 @@ export type Order = Node & {
   /** A summary of the taxes being applied to this Order */
   taxSummary: Array<OrderTaxSummary>;
   history: HistoryEntryList;
+  invoices: Array<Invoice>;
   customFields?: Maybe<OrderCustomFields>;
 };
 
@@ -4216,6 +4228,41 @@ export type AddSelectedGiftToOrderMutation = { __typename?: 'Mutation' } & {
       >)
     | ({ __typename?: 'InsufficientStockError' } & Pick<
         InsufficientStockError,
+        'errorCode' | 'message'
+      >);
+};
+
+export type CurrentUserFieldsFragment = { __typename?: 'CurrentUser' } & Pick<
+  CurrentUser,
+  'id' | 'identifier'
+> & {
+    channels: Array<
+      { __typename?: 'CurrentUserChannel' } & Pick<
+        CurrentUserChannel,
+        'code' | 'token' | 'permissions'
+      >
+    >;
+  };
+
+export type LoginMutationVariables = Exact<{
+  password: Scalars['String'];
+  rememberMe: Scalars['Boolean'];
+  username: Scalars['String'];
+}>;
+
+export type LoginMutation = { __typename?: 'Mutation' } & {
+  login:
+    | ({ __typename?: 'CurrentUser' } & CurrentUserFieldsFragment)
+    | ({ __typename?: 'InvalidCredentialsError' } & Pick<
+        InvalidCredentialsError,
+        'errorCode' | 'message'
+      >)
+    | ({ __typename?: 'NotVerifiedError' } & Pick<
+        NotVerifiedError,
+        'errorCode' | 'message'
+      >)
+    | ({ __typename?: 'NativeAuthStrategyError' } & Pick<
+        NativeAuthStrategyError,
         'errorCode' | 'message'
       >);
 };

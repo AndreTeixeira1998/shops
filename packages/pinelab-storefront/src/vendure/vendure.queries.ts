@@ -536,3 +536,33 @@ export const ADD_GIFT_TO_ORDER = gql`
     }
   }
 `;
+export const CURRENT_USER_FIELDS = gql`
+  fragment CurrentUserFields on CurrentUser {
+    id
+    identifier
+    channels {
+      code
+      token
+      permissions
+    }
+  }
+`;
+
+export const LOGIN = gql`
+  ${CURRENT_USER_FIELDS}
+  mutation Login(
+    $password: String!
+    $rememberMe: Boolean!
+    $username: String!
+  ) {
+    login(password: $password, username: $username, rememberMe: $rememberMe) {
+      ... on CurrentUser {
+        ...CurrentUserFields
+      }
+      ... on ErrorResult {
+        errorCode
+        message
+      }
+    }
+  }
+`;
