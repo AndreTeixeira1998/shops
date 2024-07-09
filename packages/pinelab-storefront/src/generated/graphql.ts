@@ -4266,3 +4266,33 @@ export type LoginMutation = { __typename?: 'Mutation' } & {
         'errorCode' | 'message'
       >);
 };
+
+export type CustomerFieldsFragment = { __typename?: 'Customer' } & Pick<
+  Customer,
+  | 'id'
+  | 'createdAt'
+  | 'updatedAt'
+  | 'title'
+  | 'firstName'
+  | 'lastName'
+  | 'phoneNumber'
+  | 'emailAddress'
+> & {
+    user?: Maybe<
+      { __typename?: 'User' } & Pick<
+        User,
+        | 'id'
+        | 'createdAt'
+        | 'updatedAt'
+        | 'identifier'
+        | 'verified'
+        | 'lastLogin'
+      >
+    >;
+  };
+
+export type ActiveCustomerQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ActiveCustomerQuery = { __typename?: 'Query' } & {
+  activeCustomer?: Maybe<{ __typename?: 'Customer' } & CustomerFieldsFragment>;
+};

@@ -328,7 +328,7 @@
     <!-------------- login modal ------------------->
     <LoginModal
       :isModalActive="isLoginModalActive"
-      @modalClosed="isLoginModalActive = false"
+      @modalClosed="handleModalClose"
     />
   </div>
 </template>
@@ -402,20 +402,30 @@ export default {
         );
       }
     },
+    async handleModalClose() {
+      this.isLoginModalActive = false;
+      await this.$vendure.getActiveCustomer();
+    },
   },
   data() {
     return {
       isSearchModalActive: false,
       isLoginModalActive: false,
+      userData: null,
     };
   },
   computed: {
     activeOrder() {
       return this.$store?.activeOrder;
     },
+    activeCustomer() {
+      const x = this.userData;
+      return this.$store?.activeCustomer;
+    },
   },
   async mounted() {
     await this.$vendure.getActiveOrder();
+    this.userData = await this.$vendure.getActiveCustomer();
   },
 };
 </script>

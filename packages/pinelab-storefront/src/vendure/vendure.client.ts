@@ -1,5 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 import {
+  ActiveCustomerQuery,
   ActiveOrderQuery,
   AdditemToOrderMutation,
   AdditemToOrderMutationVariables,
@@ -14,6 +15,7 @@ import {
   CreateCustomerInput,
   CreateMolliePaymentIntentMutation,
   CreateMolliePaymentIntentMutationVariables,
+  CustomerFieldsFragment,
   DutchAddressLookupQuery,
   DutchAddressLookupQueryVariables,
   DutchPostalCodeInput,
@@ -57,6 +59,7 @@ import {
 import { setCalculatedFields } from '../util/product.util';
 import { CalculatedProduct, Store, VendureError } from './types';
 import {
+  ACTIVE_CUSTOMER,
   ADD_GIFT_TO_ORDER,
   ADD_ITEM_TO_ORDER,
   ADJUST_ORDERLINE,
@@ -430,14 +433,22 @@ export class VendureClient {
     rememberMe: boolean
   ): Promise<void> {
     try {
-      const { login } = await this.request<
-        LoginMutation,
-        LoginMutationVariables
-      >(LOGIN, { username, password, rememberMe });
-      await this.validateResult(login);
+      await this.request<LoginMutation, LoginMutationVariables>(LOGIN, {
+        username,
+        password,
+        rememberMe,
+      });
     } catch (error) {
       throw error;
     }
+  }
+
+  async getActiveCustomer(): Promise<CustomerFieldsFragment | undefined> {
+    const { activeCustomer } = await this.request<ActiveCustomerQuery>(
+      ACTIVE_CUSTOMER
+    );
+    this.store.activeCustomer = activeCustomer;
+    return activeCustomer;
   }
 
   async request<T = void, I = void>(

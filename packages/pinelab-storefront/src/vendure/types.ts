@@ -1,6 +1,7 @@
 import {
   AvailableCountriesQuery,
   CollectionFieldsFragment,
+  CustomerFieldsFragment,
   OrderFieldsFragment,
   ProductFieldsFragment,
 } from '../generated/graphql';
@@ -51,7 +52,8 @@ export interface SortableCollection extends BasicCollection {
 }
 
 export class Store {
-  activeOrder: OrderFieldsFragment | undefined;
+  activeOrder?: OrderFieldsFragment | undefined;
+  activeCustomer?: CustomerFieldsFragment | undefined;
 }
 
 export interface VueContext {

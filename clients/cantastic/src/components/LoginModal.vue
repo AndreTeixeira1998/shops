@@ -3,18 +3,13 @@
     <b-modal v-model="isActive" :width="360">
       <div class="card">
         <form action="">
-          <div class="modal-card padding-4" style="width: auto">
-            <header class="modal-card-head">
-              <p class="modal-card-title is-uppercase has-text-primary">
-                Sign in
-              </p>
-              <button
-                type="button"
-                class="delete"
-                @click="$emit('modalClosed')"
-              />
-            </header>
-            <section class="modal-card-body" style="padding-bottom: 20px">
+          <div class="modal-card padding-4" style="width: auto; padding: 20px">
+            <p
+              class="modal-card-title is-uppercase has-text-primary has-text-weight-bold has-text-centered mgb-6"
+            >
+              Sign in
+            </p>
+            <section style="padding-top: 20px">
               <b-field label="Email">
                 <b-input
                   type="email"
@@ -41,12 +36,14 @@
                 {{ error }}
               </p>
             </section>
-            <div class="modal-card-foot" style="justify-content: center">
+            <div class="" style="justify-content: center">
               <b-button
+                class="is-half"
                 label="Login"
                 type="is-primary"
                 :disabled="!password || !isFormValid() || loading"
                 @click="userLogin()"
+                style="width: 250px; margin: 0 auto; display: block"
               ></b-button>
             </div>
           </div>

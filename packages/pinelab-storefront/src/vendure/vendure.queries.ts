@@ -566,3 +566,33 @@ export const LOGIN = gql`
     }
   }
 `;
+
+export const CUSTOMER_FIELDS = gql`
+  fragment CustomerFields on Customer {
+    id
+    createdAt
+    updatedAt
+    title
+    firstName
+    lastName
+    phoneNumber
+    emailAddress
+    user {
+      id
+      createdAt
+      updatedAt
+      identifier
+      verified
+      lastLogin
+    }
+  }
+`;
+
+export const ACTIVE_CUSTOMER = gql`
+  ${CUSTOMER_FIELDS}
+  query ActiveCustomer {
+    activeCustomer {
+      ...CustomerFields
+    }
+  }
+`;
