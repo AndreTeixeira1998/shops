@@ -29,6 +29,11 @@
               </span>
               <span class="is-hidden-mobile icon is-medium">
                 <i
+                  v-if="activeCustomer"
+                  class="has-text-white mdi mdi-logout mdi-36px"
+                ></i>
+                <i
+                  v-else
                   class="has-text-white mdi mdi-account-outline mdi-36px"
                   @click="isLoginModalActive = true"
                 ></i>

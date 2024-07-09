@@ -94,7 +94,6 @@ export default {
             emitter: this.$emitter,
           }
         );
-        console.log(result);
         this.$emit('modalClosed');
         this.$buefy.notification.open({
           message: 'Logged in successfully!',
@@ -105,7 +104,7 @@ export default {
           duration: 5000,
         });
       } catch (err) {
-        this.error = err.message;
+        this.error = err;
       } finally {
         this.loading = false;
       }

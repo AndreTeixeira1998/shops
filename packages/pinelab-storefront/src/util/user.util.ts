@@ -6,10 +6,12 @@ export async function login(
   password: string,
   rememberMe: boolean,
   ctx: { vendure: VendureClient; emitter: Emitter<any> }
-): Promise<void> {
+): Promise<any> {
   try {
-    await ctx.vendure.login(username, password, rememberMe);
-    ctx.emitter.emit('userLoggedIn');
+    const result = await ctx.vendure.login(username, password, rememberMe);
+    if (result.errorCode) {
+      throw result.message;
+    }
   } catch (error) {
     throw error;
   }

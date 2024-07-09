@@ -15,6 +15,8 @@ import {
   CreateCustomerInput,
   CreateMolliePaymentIntentMutation,
   CreateMolliePaymentIntentMutationVariables,
+  CurrentUser,
+  CurrentUserFieldsFragment,
   CustomerFieldsFragment,
   DutchAddressLookupQuery,
   DutchAddressLookupQueryVariables,
@@ -431,13 +433,17 @@ export class VendureClient {
     username: string,
     password: string,
     rememberMe: boolean
-  ): Promise<void> {
+  ): Promise<any> {
     try {
-      await this.request<LoginMutation, LoginMutationVariables>(LOGIN, {
+      const { login } = await this.request<
+        LoginMutation,
+        LoginMutationVariables
+      >(LOGIN, {
         username,
         password,
         rememberMe,
       });
+      return login;
     } catch (error) {
       throw error;
     }
