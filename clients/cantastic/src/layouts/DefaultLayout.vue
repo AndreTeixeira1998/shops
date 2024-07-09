@@ -31,6 +31,7 @@
                 <i
                   v-if="activeCustomer"
                   class="has-text-white mdi mdi-logout mdi-36px"
+                  @click="logout"
                 ></i>
                 <i
                   v-else
@@ -409,7 +410,30 @@ export default {
     },
     async handleModalClose() {
       this.isLoginModalActive = false;
-      await this.$vendure.getActiveCustomer();
+      this.userData = await this.$vendure.getActiveCustomer();
+    },
+    async logout() {
+      const res = await this.$vendure.logout();
+      if (res.success) {
+        this.userData = await this.$vendure.getActiveCustomer();
+        this.$buefy.notification.open({
+          message: 'Logged out successfully!',
+          type: 'is-success',
+          progressBar: true,
+          pauseOnHover: true,
+          position: 'is-bottom-right',
+          duration: 5000,
+        });
+      } else {
+        this.$buefy.notification.open({
+          message: 'Something went wrong. Please try again later.',
+          type: 'is-danger',
+          progressBar: true,
+          pauseOnHover: true,
+          position: 'is-bottom-right',
+          duration: 5000,
+        });
+      }
     },
   },
   data() {

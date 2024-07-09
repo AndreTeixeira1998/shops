@@ -596,3 +596,11 @@ export const ACTIVE_CUSTOMER = gql`
     }
   }
 `;
+
+export const LOGOUT = gql`
+  mutation Logout {
+    logout {
+      success
+    }
+  }
+`;

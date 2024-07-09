@@ -25,6 +25,7 @@ import {
   EligibleShippingMethodsQuery,
   LoginMutation,
   LoginMutationVariables,
+  LogoutMutation,
   MolliePaymentIntent,
   MutationSetOrderCustomFieldsArgs,
   MyparcelDropOffPoint,
@@ -78,6 +79,7 @@ import {
   GET_PRICE_AND_STOCKLEVEL,
   GET_PRODUCT,
   LOGIN,
+  LOGOUT,
   REMOVE_ALL_ORDER_LINES,
   REMOVE_COUPON_CODE,
   SET_CUSTOMER_FOR_ORDER,
@@ -455,6 +457,15 @@ export class VendureClient {
     );
     this.store.activeCustomer = activeCustomer;
     return activeCustomer;
+  }
+
+  async logout(): Promise<any> {
+    try {
+      const { logout } = await this.request<LogoutMutation>(LOGOUT);
+      return logout;
+    } catch (error) {
+      throw error;
+    }
   }
 
   async request<T = void, I = void>(

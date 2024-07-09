@@ -4296,3 +4296,9 @@ export type ActiveCustomerQueryVariables = Exact<{ [key: string]: never }>;
 export type ActiveCustomerQuery = { __typename?: 'Query' } & {
   activeCustomer?: Maybe<{ __typename?: 'Customer' } & CustomerFieldsFragment>;
 };
+
+export type LogoutMutationVariables = Exact<{ [key: string]: never }>;
+
+export type LogoutMutation = { __typename?: 'Mutation' } & {
+  logout: { __typename?: 'Success' } & Pick<Success, 'success'>;
+};
