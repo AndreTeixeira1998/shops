@@ -4,7 +4,7 @@ FROM node:18
 WORKDIR /usr/src/app
 
 COPY . .
-RUN npm install --ignore-engines
+RUN npm install
 RUN npm run build
 
 # PhantomJS fix https://github.com/bazelbuild/rules_closure/issues/351
