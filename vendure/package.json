@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node ./dist/index",
     "start:dev": "ts-node test/start-dev-server.ts",
-    "serve": "nodemon -e ts --watch './src/' --exec \"npm run build build && node ./dist/index\"",
+    "serve": "nodemon -e ts --watch './src/' --exec \"npm run build && node ./dist/index\"",
     "serve:prod": "export ENV_FILE=.env && npm run serve",
     "serve:test": "export ENV_FILE=.env.test && npm run serve",
     "serve:wkw-test": "export ENV_FILE=.env.wkw-test && npm run serve",
