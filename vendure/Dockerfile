@@ -11,4 +11,4 @@ RUN npm run build
 ENV OPENSSL_CONF=/dev/null
 
 # Run the web service on container startup.
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "start" ]
