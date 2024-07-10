@@ -7,7 +7,6 @@ import {
   Zone,
 } from '@vendure/core';
 import { TaxZoneStrategy } from '@vendure/core/dist/config/tax/tax-zone-strategy';
-import { app } from '../';
 
 const loggerCtx = 'TaxZoneStrategy';
 

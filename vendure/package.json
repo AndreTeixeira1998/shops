@@ -67,7 +67,7 @@
     "@vendure/core": "2.2.6",
     "@vendure/email-plugin": "2.2.6",
     "@vendure/migrate-v2": "^0.4.0",
-    "@vendure/payments-plugin": "2.2.6",
+    "@vendure/payments-plugin": "2.1.8",
     "@vendure/ui-devkit": "2.2.6",
     "adm-zip": "0.5.14",
     "copyfiles": "2.4.1",
