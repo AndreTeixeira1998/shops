@@ -59,7 +59,6 @@ import { MetricsPlugin } from '@pinelab/vendure-plugin-metrics';
 import { TaxPerCountryExportStrategy } from './export/tax-per-country-export-strategy';
 import { SendcloudCsvParserPlugin } from './sendcloud/sendcloud-csv-parser.plugin';
 import { SelectableGiftsPlugin } from '@pinelab/vendure-plugin-selectable-gifts';
-import { MigrationV2Plugin } from '@vendure/migrate-v2';
 import { validateDescription } from './util/seo.util';
 import { customerNotInGroup } from './promotion/customer-not-in-group-promotion-condition';
 import { json } from 'body-parser';
@@ -251,7 +250,6 @@ export const config: VendureConfig = {
     PopularityScoresPlugin.init({
       endpointSecret: process.env.WEBHOOK_TOKEN!,
     }),
-    MigrationV2Plugin,
     SelectableGiftsPlugin,
     SendcloudCsvParserPlugin,
     VariantBulkUpdatePlugin,
