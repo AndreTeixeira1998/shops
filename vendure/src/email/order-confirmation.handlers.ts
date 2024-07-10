@@ -1,6 +1,6 @@
 import { Logger, OrderPlacedEvent, translateDeep } from '@vendure/core';
 import { EmailEventHandler, EmailEventListener } from '@vendure/email-plugin';
-import { mockOrderStateTransitionEvent } from '@vendure/email-plugin/lib/src/handler/mock-events';
+// import { mockOrderStateTransitionEvent } from '@vendure/email-plugin/lib/src/handler/mock-events';
 import { InvoiceService } from '@pinelab/vendure-plugin-invoices';
 import { EBookController } from '../e-book/e-book.plugin';
 import { TaxHelper } from '../tax/tax.helper';
@@ -85,6 +85,6 @@ export const orderConfirmationHandler: EmailEventHandler<any, any> =
         summary: TaxHelper.getTaxSummary(event.order),
         ...event.data,
       };
-    })
-    // Only used for testing emails with devMode:true
-    .setMockEvent(mockOrderStateTransitionEvent);
+    });
+// Only used for testing emails with devMode:true
+// .setMockEvent(mockOrderStateTransitionEvent);
