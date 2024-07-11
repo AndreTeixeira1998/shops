@@ -50,7 +50,7 @@
     "@pinelab/vendure-plugin-google-cloud-tasks": "1.7.0",
     "@pinelab/vendure-plugin-google-storage-assets": "1.2.0",
     "@pinelab/vendure-plugin-invoices": "2.4.1",
-    "@pinelab/vendure-plugin-limit-variant-per-order": "2.1.0",
+    "@pinelab/vendure-plugin-limit-variant-per-order": "1.1.0",
     "@pinelab/vendure-plugin-metrics": "1.3.0",
     "@pinelab/vendure-plugin-myparcel": "1.3.0",
     "@pinelab/vendure-plugin-order-export": "1.2.0",

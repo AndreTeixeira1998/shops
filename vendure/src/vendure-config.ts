@@ -253,7 +253,7 @@ export const config: VendureConfig = {
     SelectableGiftsPlugin,
     SendcloudCsvParserPlugin,
     VariantBulkUpdatePlugin,
-    // LimitVariantPerOrderPlugin,
+    LimitVariantPerOrderPlugin,
     MetricsPlugin,
     EBoekhoudenPlugin,
     EBookPlugin.init(process.env.VENDURE_HOST!),
