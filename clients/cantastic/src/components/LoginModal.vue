@@ -7,22 +7,22 @@
             <p
               class="modal-card-title is-uppercase has-text-primary has-text-weight-bold has-text-centered mgb-6"
             >
-              Sign in
+              Log in
             </p>
             <section style="padding-top: 20px">
               <b-field label="Email">
                 <b-input
                   type="email"
-                  placeholder="Your email"
+                  placeholder="Email adres"
                   required
                   v-model="username"
                 >
                 </b-input>
               </b-field>
 
-              <b-field label="Password">
+              <b-field label="Wachtwoord">
                 <b-input
-                  type="password"
+                  type="Wachtwoord"
                   password-reveal
                   placeholder="Your password"
                   required
@@ -31,7 +31,7 @@
                 </b-input>
               </b-field>
 
-              <b-checkbox v-model="rememberMe">Remember me</b-checkbox>
+              <b-checkbox v-model="rememberMe">Wachtwoord onthouden</b-checkbox>
               <p class="is-size-7 has-text-centered has-text-danger">
                 {{ error }}
               </p>
@@ -96,7 +96,7 @@ export default {
         );
         this.$emit('modalClosed');
         this.$buefy.notification.open({
-          message: 'Logged in successfully!',
+          message: 'Je bent ingelogd',
           type: 'is-success',
           progressBar: true,
           pauseOnHover: true,

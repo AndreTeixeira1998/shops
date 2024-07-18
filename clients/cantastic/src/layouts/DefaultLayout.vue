@@ -27,15 +27,15 @@
                 >
                 </i>
               </span>
-              <span class="is-hidden-mobile icon is-medium">
+              <span v-if="" class="icon is-medium">
                 <i
                   v-if="activeCustomer"
-                  class="has-text-white mdi mdi-logout mdi-36px"
+                  class="has-text-white mdi mdi-logout mdi-36px is-clickable"
                   @click="logout"
                 ></i>
                 <i
                   v-else
-                  class="has-text-white mdi mdi-account-outline mdi-36px"
+                  class="has-text-white mdi mdi-account-outline mdi-36px is-clickable"
                   @click="isLoginModalActive = true"
                 ></i>
               </span>
@@ -417,7 +417,7 @@ export default {
       if (res.success) {
         this.userData = await this.$vendure.getActiveCustomer();
         this.$buefy.notification.open({
-          message: 'Logged out successfully!',
+          message: 'Je bent uitgelogd!',
           type: 'is-success',
           progressBar: true,
           pauseOnHover: true,
@@ -426,7 +426,7 @@ export default {
         });
       } else {
         this.$buefy.notification.open({
-          message: 'Something went wrong. Please try again later.',
+          message: 'Er is iets misgegaan, probeer het later nogmaals',
           type: 'is-danger',
           progressBar: true,
           pauseOnHover: true,
@@ -441,6 +441,7 @@ export default {
       isSearchModalActive: false,
       isLoginModalActive: false,
       userData: null,
+      allowLogin: process.env.GRIDSOME_HOST,
     };
   },
   computed: {
